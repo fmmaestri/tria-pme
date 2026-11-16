@@ -1,0 +1,343 @@
+{
+  "arquivo": "itens.json",
+  "versao": "0.2.0",
+  "atualizadoEm": "2026-11-03",
+  "convencaoDeResposta": {
+    "opcoes": [
+      "sim",
+      "nao",
+      "naoSei"
+    ],
+    "padrao": "Item redigido de modo que 'sim' descreva a prática desejável. 'nao' e 'naoSei' instanciam o risco.",
+    "inverso": "Quando o campo 'inverso' é true, 'sim' descreve a prática indesejável e é 'sim' que instancia o risco."
+  },
+  "itens": [
+    {
+      "codigo": "I-01",
+      "categoria": "C01",
+      "inverso": false,
+      "enunciado": "Existe um documento escrito, conhecido pela equipe, dizendo quais informações podem e quais não podem ser colocadas em ferramentas de IA?",
+      "tipoDeEvidencia": "documento",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "modoDeAdocao": [
+          "SaaS",
+          "API"
+        ]
+      }
+    },
+    {
+      "codigo": "I-02",
+      "categoria": "C01",
+      "inverso": false,
+      "enunciado": "Alguém da organização já verificou, nos termos de uso do fornecedor, se o conteúdo enviado pode ser usado para treinar os modelos dele?",
+      "tipoDeEvidencia": "registro de verificação",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "modoDeAdocao": [
+          "SaaS",
+          "API"
+        ]
+      }
+    },
+    {
+      "codigo": "I-03",
+      "categoria": "C01",
+      "inverso": true,
+      "enunciado": "Nos últimos três meses, alguém colou em uma ferramenta de IA um texto contendo nome, documento ou dado de cliente, paciente ou funcionário?",
+      "tipoDeEvidencia": "relato verificável",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "modoDeAdocao": [
+          "SaaS",
+          "API"
+        ]
+      }
+    },
+    {
+      "codigo": "I-04",
+      "categoria": "C02",
+      "inverso": false,
+      "enunciado": "Existe uma lista escrita de quais ferramentas de IA estão em uso na organização hoje?",
+      "tipoDeEvidencia": "documento",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "I-05",
+      "categoria": "C02",
+      "inverso": false,
+      "enunciado": "A adoção de uma nova ferramenta de IA passa por aprovação de alguém antes de começar a ser usada no trabalho?",
+      "tipoDeEvidencia": "processo declarado",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "I-06",
+      "categoria": "C02",
+      "inverso": true,
+      "enunciado": "Há funcionários usando ferramentas de IA em contas pessoais para tarefas da organização?",
+      "tipoDeEvidencia": "relato verificável",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "I-07",
+      "categoria": "C03",
+      "inverso": false,
+      "enunciado": "Números, datas e nomes produzidos por IA são conferidos contra a fonte original antes de serem usados?",
+      "tipoDeEvidencia": "processo declarado",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "I-08",
+      "categoria": "C03",
+      "inverso": true,
+      "enunciado": "Já aconteceu de um conteúdo gerado por IA conter informação errada que só foi percebida depois de sair da organização?",
+      "tipoDeEvidencia": "relato verificável",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "I-09",
+      "categoria": "C03",
+      "inverso": false,
+      "enunciado": "As pessoas que usam a ferramenta foram avisadas, de forma explícita, de que ela pode produzir informação falsa com aparência convincente?",
+      "tipoDeEvidencia": "comunicação registrada",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "I-29",
+      "categoria": "C03",
+      "inverso": false,
+      "enunciado": "As conversas em que a IA responde diretamente a pessoas de fora são revisadas, por amostragem e em intervalo definido, para encontrar respostas ofensivas, discriminatórias ou fora do tom da empresa?",
+      "tipoDeEvidencia": "registro de verificação",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "processaConteudoExterno": true
+      },
+      "incluidoEm": "0.2.0 (PBL8, subdomínio 1.2)"
+    },
+    {
+      "codigo": "I-10",
+      "categoria": "C04",
+      "inverso": false,
+      "enunciado": "Quando a IA apoia decisão sobre pessoas, os critérios usados para decidir estão escritos e podem ser explicados a quem foi afetado?",
+      "tipoDeEvidencia": "documento",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "criticidadeDaDecisao": [
+          "afetaPessoas"
+        ]
+      }
+    },
+    {
+      "codigo": "I-11",
+      "categoria": "C04",
+      "inverso": false,
+      "enunciado": "Alguém já comparou os resultados da IA entre grupos diferentes de pessoas para ver se há padrão de desvantagem sistemática?",
+      "tipoDeEvidencia": "registro de verificação",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "criticidadeDaDecisao": [
+          "afetaPessoas"
+        ]
+      }
+    },
+    {
+      "codigo": "I-12",
+      "categoria": "C05",
+      "inverso": false,
+      "enunciado": "Todo conteúdo gerado por IA que sai da organização passa pela leitura de uma pessoa antes do envio?",
+      "tipoDeEvidencia": "processo declarado",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "I-13",
+      "categoria": "C05",
+      "inverso": false,
+      "enunciado": "Está definido por escrito quem é a pessoa responsável por conferir a saída da IA antes do uso?",
+      "tipoDeEvidencia": "documento",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "I-14",
+      "categoria": "C06",
+      "inverso": false,
+      "enunciado": "As pessoas que recebem conteúdo produzido com apoio de IA são informadas disso?",
+      "tipoDeEvidencia": "comunicação registrada",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "exposicaoAExterno": true
+      }
+    },
+    {
+      "codigo": "I-15",
+      "categoria": "C06",
+      "inverso": false,
+      "enunciado": "Existe um caminho claro para que a pessoa afetada peça que um humano revise o que a IA produziu?",
+      "tipoDeEvidencia": "processo declarado",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "exposicaoAExterno": true
+      }
+    },
+    {
+      "codigo": "I-16",
+      "categoria": "C07",
+      "inverso": false,
+      "enunciado": "Se a ferramenta de IA saísse do ar amanhã, existe uma forma combinada de continuar o trabalho sem ela?",
+      "tipoDeEvidencia": "processo declarado",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "modoDeAdocao": [
+          "SaaS",
+          "API"
+        ]
+      }
+    },
+    {
+      "codigo": "I-17",
+      "categoria": "C07",
+      "inverso": false,
+      "enunciado": "A organização consegue extrair do fornecedor o histórico do que já produziu, num formato utilizável fora da ferramenta?",
+      "tipoDeEvidencia": "verificação técnica",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "modoDeAdocao": [
+          "SaaS",
+          "API"
+        ]
+      }
+    },
+    {
+      "codigo": "I-18",
+      "categoria": "C08",
+      "inverso": false,
+      "enunciado": "Antes de publicar conteúdo gerado por IA, alguém verifica se a organização pode usá-lo comercialmente?",
+      "tipoDeEvidencia": "registro de verificação",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "publicaConteudo": true
+      }
+    },
+    {
+      "codigo": "I-19",
+      "categoria": "C08",
+      "inverso": true,
+      "enunciado": "A organização envia à IA documentos de terceiros — contratos, materiais de clientes, obras protegidas — sem ter verificado se pode fazer isso?",
+      "tipoDeEvidencia": "relato verificável",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "I-20",
+      "categoria": "C09",
+      "inverso": true,
+      "enunciado": "Existe alguma conta de ferramenta de IA cuja senha é compartilhada entre duas ou mais pessoas?",
+      "tipoDeEvidencia": "verificação direta",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "I-21",
+      "categoria": "C09",
+      "inverso": false,
+      "enunciado": "As contas de ferramentas de IA têm verificação em duas etapas ativada?",
+      "tipoDeEvidencia": "verificação direta",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "I-22",
+      "categoria": "C09",
+      "inverso": false,
+      "enunciado": "Quando alguém sai da organização, os acessos dessa pessoa às ferramentas de IA são removidos?",
+      "tipoDeEvidencia": "processo declarado",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "I-23",
+      "categoria": "C10",
+      "inverso": false,
+      "enunciado": "É possível saber, seis meses depois, que um determinado texto ou decisão teve apoio de IA?",
+      "tipoDeEvidencia": "verificação direta",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "I-24",
+      "categoria": "C10",
+      "inverso": false,
+      "enunciado": "Fica registrado quem foi a pessoa responsável por aprovar cada conteúdo produzido com apoio de IA?",
+      "tipoDeEvidencia": "verificação direta",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "I-25",
+      "categoria": "C11",
+      "inverso": false,
+      "enunciado": "Quando a IA processa texto escrito por pessoas de fora, existe limite do que ela pode fazer a partir desse texto — como conceder desconto, prometer prazo ou alterar cadastro?",
+      "tipoDeEvidencia": "verificação técnica",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "processaConteudoExterno": true
+      }
+    },
+    {
+      "codigo": "I-26",
+      "categoria": "C11",
+      "inverso": false,
+      "enunciado": "Alguém já testou propositalmente pedir à ferramenta algo que ela não deveria fazer, para ver se ela recusa?",
+      "tipoDeEvidencia": "registro de teste",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "processaConteudoExterno": true
+      }
+    },
+    {
+      "codigo": "I-30",
+      "categoria": "C11",
+      "inverso": false,
+      "enunciado": "Existe uma regra, conhecida por quem autoriza pagamentos, de que pedidos de pagamento, transferência ou troca de dados bancários recebidos por mensagem, áudio ou vídeo só são atendidos depois de confirmados por um segundo canal?",
+      "tipoDeEvidencia": "processo declarado",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {},
+      "incluidoEm": "0.2.0 (PBL8, subdomínio 4.3)"
+    },
+    {
+      "codigo": "I-27",
+      "categoria": "C12",
+      "inverso": false,
+      "enunciado": "Existe alguma conferência periódica da qualidade do que a ferramenta vem produzindo, em intervalo definido?",
+      "tipoDeEvidencia": "registro de verificação",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "modoDeAdocao": [
+          "SaaS",
+          "API"
+        ]
+      }
+    },
+    {
+      "codigo": "I-28",
+      "categoria": "C12",
+      "inverso": false,
+      "enunciado": "A organização acompanha os avisos de mudança do fornecedor sobre alterações no modelo ou no serviço?",
+      "tipoDeEvidencia": "processo declarado",
+      "verificavel": true,
+      "condicaoDeAplicabilidade": {
+        "modoDeAdocao": [
+          "SaaS",
+          "API"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,481 @@
+{
+  "arquivo": "controles.json",
+  "versao": "0.2.0",
+  "atualizadoEm": "2026-11-03",
+  "regraDeProporcionalidade": "Todo controle cujo papel sugerido pressuponha função inexistente em PME de baixa maturidade — comitê de IA, gestor de risco dedicado, jurídico interno, encarregado em tempo integral — é rejeitado na curadoria. Os papéis admitidos são apenas: direção ou sócio, responsável de TI (inclusive terceirizado), responsável administrativo e responsável da área.",
+  "papeisAdmitidos": [
+    "direcao_ou_socio",
+    "responsavel_ti",
+    "responsavel_administrativo",
+    "responsavel_da_area"
+  ],
+  "controles": [
+    {
+      "codigo": "CT-01",
+      "categorias": [
+        "C01",
+        "C02"
+      ],
+      "descricao": "Escrever uma folha única listando o que pode e o que não pode ser colocado em ferramentas de IA, com três exemplos do que a organização de fato faz, e enviar a todos os funcionários.",
+      "tipo": "preventivo",
+      "esforco": "baixo",
+      "horizonte": "imediato",
+      "papelSugerido": "direcao_ou_socio",
+      "fonte": "NIST-AI-RMF:GOVERN-1.2",
+      "condicaoDeAplicabilidade": {
+        "modoDeAdocao": [
+          "SaaS",
+          "API"
+        ]
+      }
+    },
+    {
+      "codigo": "CT-02",
+      "categorias": [
+        "C01"
+      ],
+      "descricao": "Abrir os termos de uso do fornecedor, localizar a cláusula sobre uso do conteúdo para treinamento e, se houver opção de desativar, desativá-la. Guardar uma captura da configuração.",
+      "tipo": "preventivo",
+      "esforco": "medio",
+      "horizonte": "curto",
+      "papelSugerido": "responsavel_ti",
+      "fonte": "ISO-23894:6.4.2",
+      "condicaoDeAplicabilidade": {
+        "modoDeAdocao": [
+          "SaaS",
+          "API"
+        ]
+      }
+    },
+    {
+      "codigo": "CT-03",
+      "categorias": [
+        "C01"
+      ],
+      "descricao": "Adotar a prática de substituir nome, documento e contato por marcadores genéricos antes de enviar qualquer texto sobre pessoa à ferramenta.",
+      "tipo": "preventivo",
+      "esforco": "medio",
+      "horizonte": "curto",
+      "papelSugerido": "responsavel_da_area",
+      "fonte": "NIST-AI-RMF:MAP-3.1",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-04",
+      "categorias": [
+        "C02",
+        "C10"
+      ],
+      "descricao": "Montar uma planilha simples com as ferramentas de IA em uso: nome, para que serve, quem usa, qual conta. Revisar a cada seis meses.",
+      "tipo": "detectivo",
+      "esforco": "baixo",
+      "horizonte": "imediato",
+      "papelSugerido": "responsavel_administrativo",
+      "fonte": "NIST-AI-RMF:GOVERN-1.2",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-05",
+      "categorias": [
+        "C02"
+      ],
+      "descricao": "Definir que qualquer nova ferramenta de IA usada em trabalho da organização precisa de aprovação prévia da direção, e comunicar essa regra por escrito.",
+      "tipo": "preventivo",
+      "esforco": "baixo",
+      "horizonte": "imediato",
+      "papelSugerido": "direcao_ou_socio",
+      "fonte": "ISO-23894:6.2",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-06",
+      "categorias": [
+        "C02",
+        "C09"
+      ],
+      "descricao": "Migrar o uso de contas pessoais para contas corporativas da organização, ainda que no plano gratuito.",
+      "tipo": "corretivo",
+      "esforco": "alto",
+      "horizonte": "medio",
+      "papelSugerido": "responsavel_ti",
+      "fonte": "NIST-AI-RMF:MANAGE-2.2",
+      "condicaoDeAplicabilidade": {
+        "modoDeAdocao": [
+          "SaaS",
+          "API"
+        ]
+      }
+    },
+    {
+      "codigo": "CT-07",
+      "categorias": [
+        "C03"
+      ],
+      "descricao": "Estabelecer a regra de que todo número, data, nome próprio e referência produzidos por IA são conferidos contra a fonte antes do uso, e que quem confere assina.",
+      "tipo": "detectivo",
+      "esforco": "baixo",
+      "horizonte": "imediato",
+      "papelSugerido": "responsavel_da_area",
+      "fonte": "NIST-AI-RMF:MEASURE-2.5",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-08",
+      "categorias": [
+        "C03",
+        "C05"
+      ],
+      "descricao": "Fazer uma conversa de trinta minutos com a equipe mostrando, com dois exemplos reais, que a ferramenta produz informação falsa com aparência convincente.",
+      "tipo": "preventivo",
+      "esforco": "baixo",
+      "horizonte": "curto",
+      "papelSugerido": "direcao_ou_socio",
+      "fonte": "NIST-AI-RMF:GOVERN-4.1",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-09",
+      "categorias": [
+        "C04"
+      ],
+      "descricao": "Escrever os critérios da decisão que a IA apoia, em linguagem que possa ser lida por quem for afetado, e conferir se a saída da ferramenta segue esses critérios.",
+      "tipo": "preventivo",
+      "esforco": "medio",
+      "horizonte": "curto",
+      "papelSugerido": "responsavel_da_area",
+      "fonte": "NIST-AI-RMF:MEASURE-2.11",
+      "condicaoDeAplicabilidade": {
+        "criticidadeDaDecisao": [
+          "afetaPessoas"
+        ]
+      }
+    },
+    {
+      "codigo": "CT-10",
+      "categorias": [
+        "C04"
+      ],
+      "descricao": "Separar uma amostra de vinte decisões apoiadas por IA e comparar os resultados entre grupos de pessoas diferentes, procurando padrão de desvantagem.",
+      "tipo": "detectivo",
+      "esforco": "alto",
+      "horizonte": "medio",
+      "papelSugerido": "responsavel_da_area",
+      "fonte": "ISO-23894:6.4.4",
+      "condicaoDeAplicabilidade": {
+        "criticidadeDaDecisao": [
+          "afetaPessoas"
+        ]
+      }
+    },
+    {
+      "codigo": "CT-11",
+      "categorias": [
+        "C05"
+      ],
+      "descricao": "Definir por escrito que nenhum conteúdo gerado por IA sai da organização sem leitura de uma pessoa, e nomear quem é essa pessoa em cada tipo de conteúdo.",
+      "tipo": "preventivo",
+      "esforco": "baixo",
+      "horizonte": "imediato",
+      "papelSugerido": "direcao_ou_socio",
+      "fonte": "NIST-AI-RMF:GOVERN-3.2",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-12",
+      "categorias": [
+        "C05",
+        "C10"
+      ],
+      "descricao": "Adotar um campo de conferência — uma caixa a marcar, uma rubrica — no fluxo em que o conteúdo é aprovado, de modo que a revisão deixe rastro.",
+      "tipo": "detectivo",
+      "esforco": "medio",
+      "horizonte": "curto",
+      "papelSugerido": "responsavel_administrativo",
+      "fonte": "ISO-23894:6.5.3",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-13",
+      "categorias": [
+        "C06"
+      ],
+      "descricao": "Incluir uma frase padrão nos conteúdos enviados a clientes informando que foram produzidos com apoio de ferramenta de IA e revisados por profissional da organização.",
+      "tipo": "preventivo",
+      "esforco": "baixo",
+      "horizonte": "imediato",
+      "papelSugerido": "responsavel_da_area",
+      "fonte": "NIST-AI-RMF:GOVERN-4.2",
+      "condicaoDeAplicabilidade": {
+        "exposicaoAExterno": true
+      }
+    },
+    {
+      "codigo": "CT-14",
+      "categorias": [
+        "C06"
+      ],
+      "descricao": "Oferecer, no mesmo conteúdo, um canal explícito para que a pessoa peça revisão por um profissional, e registrar os pedidos recebidos.",
+      "tipo": "corretivo",
+      "esforco": "medio",
+      "horizonte": "curto",
+      "papelSugerido": "responsavel_administrativo",
+      "fonte": "ISO-23894:6.4.5",
+      "condicaoDeAplicabilidade": {
+        "exposicaoAExterno": true
+      }
+    },
+    {
+      "codigo": "CT-15",
+      "categorias": [
+        "C07"
+      ],
+      "descricao": "Escrever em meia página como o processo era feito antes da ferramenta, de modo que dê para voltar a ele se a ferramenta sair do ar.",
+      "tipo": "corretivo",
+      "esforco": "baixo",
+      "horizonte": "curto",
+      "papelSugerido": "responsavel_da_area",
+      "fonte": "NIST-AI-RMF:GOVERN-6.1",
+      "condicaoDeAplicabilidade": {
+        "modoDeAdocao": [
+          "SaaS",
+          "API"
+        ]
+      }
+    },
+    {
+      "codigo": "CT-16",
+      "categorias": [
+        "C07"
+      ],
+      "descricao": "Exportar periodicamente o histórico e os dados mantidos no fornecedor, guardando cópia em local controlado pela organização.",
+      "tipo": "preventivo",
+      "esforco": "medio",
+      "horizonte": "medio",
+      "papelSugerido": "responsavel_ti",
+      "fonte": "ISO-23894:6.4.6",
+      "condicaoDeAplicabilidade": {
+        "modoDeAdocao": [
+          "SaaS",
+          "API"
+        ]
+      }
+    },
+    {
+      "codigo": "CT-17",
+      "categorias": [
+        "C08"
+      ],
+      "descricao": "Antes de publicar material gerado por IA, verificar nos termos do fornecedor se o uso comercial é permitido, e guardar o registro dessa verificação.",
+      "tipo": "preventivo",
+      "esforco": "baixo",
+      "horizonte": "curto",
+      "papelSugerido": "responsavel_administrativo",
+      "fonte": "NIST-AI-RMF:MAP-4.1",
+      "condicaoDeAplicabilidade": {
+        "publicaConteudo": true
+      }
+    },
+    {
+      "codigo": "CT-18",
+      "categorias": [
+        "C08",
+        "C01"
+      ],
+      "descricao": "Estabelecer que documentos de terceiros só são enviados à ferramenta quando o contrato com o terceiro permitir, e consultar antes em caso de dúvida.",
+      "tipo": "preventivo",
+      "esforco": "medio",
+      "horizonte": "curto",
+      "papelSugerido": "direcao_ou_socio",
+      "fonte": "ISO-23894:6.4.6",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-19",
+      "categorias": [
+        "C09"
+      ],
+      "descricao": "Ativar verificação em duas etapas em todas as contas de ferramentas de IA da organização.",
+      "tipo": "preventivo",
+      "esforco": "baixo",
+      "horizonte": "imediato",
+      "papelSugerido": "responsavel_ti",
+      "fonte": "NIST-AI-RMF:MANAGE-2.2",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-20",
+      "categorias": [
+        "C09"
+      ],
+      "descricao": "Encerrar as contas compartilhadas e criar um acesso individual por pessoa, ainda que isso signifique trocar de plano.",
+      "tipo": "corretivo",
+      "esforco": "alto",
+      "horizonte": "medio",
+      "papelSugerido": "responsavel_ti",
+      "fonte": "ISO-23894:6.4.2",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-21",
+      "categorias": [
+        "C09"
+      ],
+      "descricao": "Incluir a remoção dos acessos às ferramentas de IA na lista de providências de desligamento de funcionário.",
+      "tipo": "preventivo",
+      "esforco": "baixo",
+      "horizonte": "imediato",
+      "papelSugerido": "responsavel_administrativo",
+      "fonte": "NIST-AI-RMF:MANAGE-2.2",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-22",
+      "categorias": [
+        "C10"
+      ],
+      "descricao": "Passar a guardar, junto com o conteúdo final, a indicação de que houve apoio de IA e o nome de quem aprovou.",
+      "tipo": "detectivo",
+      "esforco": "baixo",
+      "horizonte": "curto",
+      "papelSugerido": "responsavel_administrativo",
+      "fonte": "NIST-AI-RMF:GOVERN-1.4",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-23",
+      "categorias": [
+        "C10"
+      ],
+      "descricao": "Definir por quanto tempo esses registros são mantidos e onde ficam, de modo que possam ser recuperados quando questionados.",
+      "tipo": "preventivo",
+      "esforco": "medio",
+      "horizonte": "medio",
+      "papelSugerido": "responsavel_administrativo",
+      "fonte": "ISO-23894:6.5.3",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-24",
+      "categorias": [
+        "C11"
+      ],
+      "descricao": "Delimitar por escrito o que a ferramenta pode e não pode fazer a partir de texto vindo de fora — não conceder desconto, não prometer prazo, não alterar cadastro — e configurar esse limite onde a ferramenta permitir.",
+      "tipo": "preventivo",
+      "esforco": "medio",
+      "horizonte": "curto",
+      "papelSugerido": "responsavel_ti",
+      "fonte": "NIST-AI-RMF:MEASURE-2.7",
+      "condicaoDeAplicabilidade": {
+        "processaConteudoExterno": true
+      }
+    },
+    {
+      "codigo": "CT-25",
+      "categorias": [
+        "C11"
+      ],
+      "descricao": "Fazer um teste mensal em que alguém da equipe tenta, de propósito, fazer a ferramenta agir fora do permitido, e registrar o resultado.",
+      "tipo": "detectivo",
+      "esforco": "medio",
+      "horizonte": "medio",
+      "papelSugerido": "responsavel_ti",
+      "fonte": "ISO-23894:6.4.2",
+      "condicaoDeAplicabilidade": {
+        "processaConteudoExterno": true
+      }
+    },
+    {
+      "codigo": "CT-26",
+      "categorias": [
+        "C12"
+      ],
+      "descricao": "Separar cinco casos de referência com a saída considerada boa e reexecutá-los mensalmente, comparando o resultado com o guardado.",
+      "tipo": "detectivo",
+      "esforco": "medio",
+      "horizonte": "curto",
+      "papelSugerido": "responsavel_da_area",
+      "fonte": "NIST-AI-RMF:MEASURE-4.1",
+      "condicaoDeAplicabilidade": {
+        "modoDeAdocao": [
+          "SaaS",
+          "API"
+        ]
+      }
+    },
+    {
+      "codigo": "CT-27",
+      "categorias": [
+        "C12",
+        "C07"
+      ],
+      "descricao": "Inscrever um endereço da organização na lista de avisos de mudança do fornecedor e designar quem lê esses avisos.",
+      "tipo": "preventivo",
+      "esforco": "baixo",
+      "horizonte": "imediato",
+      "papelSugerido": "responsavel_ti",
+      "fonte": "ISO-23894:6.5.2",
+      "condicaoDeAplicabilidade": {
+        "modoDeAdocao": [
+          "SaaS",
+          "API"
+        ]
+      }
+    },
+    {
+      "codigo": "CT-28",
+      "categorias": [
+        "C03",
+        "C05",
+        "C06"
+      ],
+      "descricao": "Reunir a equipe uma vez por semestre para revisar as regras de uso de IA da organização à luz do que aconteceu no período.",
+      "tipo": "preventivo",
+      "esforco": "medio",
+      "horizonte": "medio",
+      "papelSugerido": "direcao_ou_socio",
+      "fonte": "NIST-AI-RMF:GOVERN-4.1",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-29",
+      "categorias": [
+        "C03"
+      ],
+      "descricao": "Configurar no atendimento por IA uma instrução fixa com temas e tons proibidos (ofensas, piadas, opinião política, orientação médica ou jurídica) e revisar todo mês uma amostra de vinte conversas, anotando as respostas inadequadas encontradas.",
+      "tipo": "detectivo",
+      "esforco": "medio",
+      "horizonte": "curto",
+      "papelSugerido": "responsavel_da_area",
+      "fonte": "NIST-AI-RMF:MEASURE-2.6",
+      "condicaoDeAplicabilidade": {
+        "processaConteudoExterno": true
+      }
+    },
+    {
+      "codigo": "CT-30",
+      "categorias": [
+        "C11"
+      ],
+      "descricao": "Definir por escrito que todo pedido de pagamento, transferência ou troca de dados bancários — mesmo vindo de sócio, cliente ou fornecedor conhecido — só é atendido depois de confirmado por um segundo canal, como uma ligação para o número já cadastrado, e comunicar a regra a quem autoriza pagamentos.",
+      "tipo": "preventivo",
+      "esforco": "baixo",
+      "horizonte": "imediato",
+      "papelSugerido": "direcao_ou_socio",
+      "fonte": "ISO-23894:6.4.2",
+      "condicaoDeAplicabilidade": {}
+    },
+    {
+      "codigo": "CT-31",
+      "categorias": [
+        "C11"
+      ],
+      "descricao": "Fazer uma conversa de quinze minutos com quem lida com pagamentos e cadastros, mostrando exemplos de golpes com voz, vídeo e mensagens falsificados por IA, e combinar uma palavra de verificação para pedidos urgentes.",
+      "tipo": "preventivo",
+      "esforco": "baixo",
+      "horizonte": "curto",
+      "papelSugerido": "direcao_ou_socio",
+      "fonte": "NIST-AI-RMF:GOVERN-2.2",
+      "condicaoDeAplicabilidade": {}
+    }
+  ]
+}

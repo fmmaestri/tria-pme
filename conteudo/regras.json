@@ -1,0 +1,290 @@
+{
+  "arquivo": "regras.json",
+  "versao": "0.2.0",
+  "atualizadoEm": "2026-11-03",
+  "escalas": {
+    "impacto": {
+      "pergunta": "Se isso acontecesse aqui, até onde chegaria a consequência?",
+      "opcoes": [
+        {
+          "valor": 1,
+          "ancora": "Resolveríamos internamente no mesmo dia; ninguém de fora ficaria sabendo e não haveria custo relevante."
+        },
+        {
+          "valor": 2,
+          "ancora": "Daria retrabalho e algum constrangimento interno, mas não sairia da empresa."
+        },
+        {
+          "valor": 3,
+          "ancora": "Teríamos de avisar e nos explicar para o cliente ou paciente afetado, ou teríamos um prejuízo que a empresa absorve sem dificuldade."
+        },
+        {
+          "valor": 4,
+          "ancora": "Teríamos de comunicar formalmente os afetados e provavelmente perderíamos o cliente, ou teríamos um prejuízo que pesa no caixa do mês."
+        },
+        {
+          "valor": 5,
+          "ancora": "Teríamos de comunicar a autoridade competente e provavelmente responder a processo."
+        }
+      ]
+    },
+    "frequencia": {
+      "pergunta": "Isso já aconteceu na empresa?",
+      "nota": "A pergunta é sobre o evento descrito em 'eventoDeOcorrencia' de cada categoria (taxonomia.json), e não sobre a falta de controle que a E2 já identificou.",
+      "opcoes": [
+        {
+          "codigo": "nunca",
+          "rotulo": "Não, até onde sabemos nunca aconteceu.",
+          "valor": 2
+        },
+        {
+          "codigo": "jaAconteceu",
+          "rotulo": "Sim, já aconteceu pelo menos uma vez.",
+          "valor": 4
+        },
+        {
+          "codigo": "naoSei",
+          "rotulo": "Não sei dizer.",
+          "valor": 4,
+          "tratadoComo": "jaAconteceu",
+          "justificativa": "Mesma lógica do 'não sei' da E2: numa empresa que não monitora, não saber se aconteceu é, em si, sinal de risco. 'Nunca aconteceu' muitas vezes quer dizer 'nunca percebemos'."
+        }
+      ]
+    }
+  },
+  "frequenciaPelaE2": {
+    "descricao": "Quando uma pergunta da E2 já relata que o evento aconteceu, a frequência da categoria na E3 vem preenchida e não pode ser contrariada na E3 (para mudar, é preciso revisar a resposta na E2). Evita a contradição observada no teste-piloto do PBL7, em que os participantes disseram na E2 que um erro da IA já tinha chegado a um cliente e, na E3, que isso nunca tinha acontecido.",
+    "vinculos": [
+      {
+        "item": "I-03",
+        "categoria": "C01"
+      },
+      {
+        "item": "I-06",
+        "categoria": "C02"
+      },
+      {
+        "item": "I-08",
+        "categoria": "C03"
+      },
+      {
+        "item": "I-19",
+        "categoria": "C08"
+      }
+    ],
+    "mapeamento": {
+      "sim": "jaAconteceu",
+      "naoSei": "naoSei"
+    },
+    "itensNaoVinculados": [
+      {
+        "item": "I-20",
+        "motivo": "Senha compartilhada é uma condição de risco, não o evento de C09 (conta usada por quem não deveria). Vincular a condição ao evento repetiria a confusão entre condição e evento que o PBL7 apontou na escala antiga."
+      }
+    ]
+  },
+  "pisosDeImpacto": {
+    "descricao": "Valor mínimo de impacto, definido pelo perfil (E1) e por respostas da E2. O respondente pode escolher um impacto maior que o piso, mas não menor. O escore usa max(impacto declarado, piso). Quando mais de uma regra se aplica, vale o maior piso.",
+    "regras": [
+      {
+        "codigo": "PI-01",
+        "se": {
+          "modificador": "m_dados_sensiveis"
+        },
+        "categorias": [
+          "C01",
+          "C02",
+          "C09",
+          "C10"
+        ],
+        "piso": 4,
+        "motivo": "a empresa trata dado sensível, financeiro ou segredo de negócio",
+        "justificativa": "Incidente com esses dados tende a exigir comunicação formal aos titulares e, em regra, à ANPD (LGPD, art. 48; Resolução CD/ANPD nº 15/2024). As categorias são aquelas sobre as quais o próprio agravante m_dados_sensiveis incide."
+      },
+      {
+        "codigo": "PI-02",
+        "se": {
+          "modificador": "m_decisao_sobre_pessoas"
+        },
+        "categorias": [
+          "C03",
+          "C04",
+          "C05",
+          "C06"
+        ],
+        "piso": 3,
+        "motivo": "a IA ajuda a decidir sobre pessoas",
+        "justificativa": "Quando a IA influencia uma decisão sobre alguém, o erro atinge essa pessoa diretamente; no mínimo é preciso avisá-la e se explicar (LGPD, art. 20, revisão de decisões automatizadas)."
+      },
+      {
+        "codigo": "PI-03",
+        "se": {
+          "modificador": "m_setor_regulado"
+        },
+        "categorias": [
+          "C01",
+          "C05",
+          "C06",
+          "C10"
+        ],
+        "piso": 3,
+        "motivo": "a empresa atua em setor com regulação própria",
+        "justificativa": "Em setor com conselho profissional ou órgão regulador, o profissional responde perante o cliente pelo que entrega, com ou sem IA."
+      },
+      {
+        "codigo": "PI-04",
+        "se": {
+          "perfil": {
+            "naturezaDosDados": [
+              "pessoaisComuns"
+            ]
+          }
+        },
+        "categorias": [
+          "C01"
+        ],
+        "piso": 3,
+        "motivo": "a empresa trata dados pessoais de clientes ou funcionários",
+        "justificativa": "Enviar dado pessoal de cliente a fornecedor sem base para isso é tratamento irregular que pode exigir avisar o titular (LGPD, arts. 6º, 7º e 48). Responde à crítica do PBL7: no piloto, os dois participantes marcaram para C01 'daria retrabalho, mas não sairia da empresa'."
+      },
+      {
+        "codigo": "PI-05",
+        "se": {
+          "resposta": {
+            "item": "I-08",
+            "valores": [
+              "sim"
+            ]
+          }
+        },
+        "categorias": [
+          "C03"
+        ],
+        "piso": 3,
+        "motivo": "na E2 você informou que um erro da IA já chegou a alguém de fora",
+        "justificativa": "Se o erro já saiu da empresa, a consequência mínima observada é ter de se explicar a quem o recebeu."
+      }
+    ]
+  },
+  "modificadores": [
+    {
+      "codigo": "m_dados_sensiveis",
+      "rotulo": "Trata dado pessoal sensível, financeiro ou segredo de negócio",
+      "peso": 0.3,
+      "derivadoDe": {
+        "campoDoPerfil": "naturezaDosDados",
+        "ligaSe": [
+          "saude",
+          "financeiro",
+          "biometrico",
+          "segredoDeNegocio",
+          "dadosDeMenores"
+        ]
+      },
+      "incideSobre": [
+        "C01",
+        "C02",
+        "C09",
+        "C10"
+      ]
+    },
+    {
+      "codigo": "m_decisao_sobre_pessoas",
+      "rotulo": "A IA apoia decisão que afeta pessoas identificáveis",
+      "peso": 0.25,
+      "derivadoDe": {
+        "campoDoPerfil": "criticidadeDaDecisao",
+        "ligaSe": [
+          "afetaPessoas"
+        ]
+      },
+      "incideSobre": [
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ]
+    },
+    {
+      "codigo": "m_setor_regulado",
+      "rotulo": "Atua em setor com regulação própria de atividade",
+      "peso": 0.2,
+      "derivadoDe": {
+        "campoDoPerfil": "setor",
+        "ligaSe": [
+          "saude",
+          "educacao",
+          "financeiro",
+          "juridico",
+          "contabil"
+        ]
+      },
+      "incideSobre": [
+        "C01",
+        "C05",
+        "C06",
+        "C10"
+      ]
+    }
+  ],
+  "somaMaximaDePesos": 0.75,
+  "fatorMaximo": 1.75,
+  "escoreMaximoTeorico": 35.0,
+  "faixas": [
+    {
+      "nome": "critico",
+      "min": 24.0,
+      "rotulo": "Crítico"
+    },
+    {
+      "nome": "alto",
+      "min": 14.0,
+      "rotulo": "Alto"
+    },
+    {
+      "nome": "moderado",
+      "min": 7.0,
+      "rotulo": "Moderado"
+    },
+    {
+      "nome": "baixo",
+      "min": 0.0,
+      "rotulo": "Baixo"
+    }
+  ],
+  "limiarDeAcaoObrigatoria": 14.0,
+  "regraDeNaoAnulacao": {
+    "descricao": "Uma categoria só é excluída do registro quando TODOS os itens aplicáveis que a alcançam foram respondidos de forma que não indica exposição. Nenhuma resposta isolada anula uma categoria.",
+    "implementacao": "categoriaExcluida(c) := para todo item i aplicavel com i.categoria == c, resposta(i).instanciaRisco == false",
+    "complementoNaE3": "Na E3, o piso de impacto e a frequência preenchida pela E2 impedem que uma única resposta de julgamento retire do plano um risco que o perfil ou a própria E2 indicam como relevante."
+  },
+  "tratamentoDoNaoSei": {
+    "descricao": "A resposta 'não sei' instancia o risco com o mesmo peso de 'não'. O desconhecimento sobre uma prática é, ele próprio, indicador de risco de governança.",
+    "instanciaRisco": true
+  },
+  "apresentacao": {
+    "ocultarEscoreDuranteE3": true,
+    "justificativa": "Mostrar o escore e o destino (plano ou monitoramento) enquanto o respondente escolhe as respostas permite escolher a resposta que tira o risco do plano. O registro de riscos só aparece depois que todas as categorias foram avaliadas."
+  },
+  "ordenacaoDeControles": {
+    "criterioPrimario": "esforco",
+    "ordem": [
+      "baixo",
+      "medio",
+      "alto"
+    ],
+    "criterioSecundario": "horizonte",
+    "ordemSecundaria": [
+      "imediato",
+      "curto",
+      "medio"
+    ],
+    "justificativa": "A PME deve começar pelo exequível. Ordenar por esforço crescente maximiza a probabilidade de o primeiro item do plano ser efetivamente executado."
+  },
+  "notasDeCalibracao": [
+    "Versão 0.2.0 (PBL8). A escala de frequência passou de 5 para 3 opções (nunca = 2; já aconteceu = 4; não sei = 4). Os valores 2 e 4 foram escolhidos por reproduzirem, nos três cenários sintéticos do PBL7 (cenarios.json), os mesmos 13 riscos de plano do gabarito quando o impacto é o correto, mantendo o limiar 14 e as faixas da versão anterior. Essa calibração usa um gabarito definido pelos autores; não é calibração empírica.",
+    "Com a nova escala, o escore máximo teórico é 35 = 5 × 4 × 1,75. Os cortes das faixas foram mantidos: um risco de impacto 5 que já aconteceu é Alto sem agravante (20) e Crítico com qualquer agravante a partir de 1,20.",
+    "Os pisos de impacto reproduzem o protótipo testado no PBL7 (piso 4 para as categorias do agravante de dados sensíveis, piso 3 para as dos demais agravantes), acrescido de duas regras: PI-04 (dados pessoais comuns em C01) e PI-05 (erro que já saiu da empresa em C03).",
+    "As faixas usam limiar absoluto e não quantil, de modo deliberado: um corte por quantil garantiria sempre a existência de riscos 'críticos', mesmo em organização bem posicionada."
+  ]
+}

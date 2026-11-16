@@ -1,0 +1,310 @@
+{
+  "arquivo": "taxonomia.json",
+  "versao": "0.2.0",
+  "atualizadoEm": "2026-11-03",
+  "escopo": "Riscos de IA para organizações que CONSOMEM inteligência artificial como serviço de terceiros. Riscos próprios do ciclo de desenvolvimento e do treinamento de modelos estão fora do escopo por inaplicabilidade ao público-alvo.",
+  "fontesDeReconciliacao": [
+    "AI Risk Repository (Slattery et al., 2026) — 7 domínios de primeiro nível",
+    "NIST AI Risk Management Framework 1.0",
+    "ISO/IEC 23894:2023 — Information technology, AI, Guidance on risk management"
+  ],
+  "categorias": [
+    {
+      "codigo": "C01",
+      "nome": "Informação confidencial enviada a serviço de terceiro",
+      "definicao": "Dado pessoal, financeiro ou segredo de negócio é transmitido a um fornecedor de IA sem que a organização saiba o que ele faz com esse dado depois.",
+      "criterioDeFronteira": "Distingue-se de C02 porque aqui a ferramenta é conhecida e autorizada — o que falta é controle sobre o dado, não sobre a ferramenta. Distingue-se de C09 porque o dado sai por uso normal da ferramenta, não por invasão.",
+      "exemploConcreto": "Colar o texto de um prontuário, de uma folha de pagamento ou de um contrato numa ferramenta de IA para pedir um resumo.",
+      "fontesNormativas": [
+        "AIRR:D2-Privacy&Security",
+        "NIST-AI-RMF:MAP-3.1",
+        "ISO-23894:6.4.2"
+      ],
+      "aplicabilidadePorModoDeAdocao": [
+        "SaaS",
+        "API"
+      ],
+      "eventoDeOcorrencia": "algum dado pessoal, financeiro ou confidencial foi colado ou enviado a uma ferramenta de IA de terceiro sem que isso estivesse autorizado"
+    },
+    {
+      "codigo": "C02",
+      "nome": "Uso não sancionado de ferramenta de IA",
+      "definicao": "Funcionários usam ferramentas de IA em trabalho da organização sem que a organização saiba quais são, quem usa ou para quê.",
+      "criterioDeFronteira": "Distingue-se de C01 porque aqui o problema é a ferramenta desconhecida, não o dado. Distingue-se de C10 porque C10 trata do registro da decisão tomada, e C02 do registro da ferramenta em uso.",
+      "exemploConcreto": "Três funcionários usam três assistentes de IA diferentes, em contas pessoais, e a direção não sabe.",
+      "fontesNormativas": [
+        "AIRR:D2-Privacy&Security",
+        "AIRR:D7-AISystemFailures",
+        "NIST-AI-RMF:GOVERN-1.2",
+        "ISO-23894:6.2"
+      ],
+      "aplicabilidadePorModoDeAdocao": [
+        "SaaS",
+        "API",
+        "ModeloProprio"
+      ],
+      "eventoDeOcorrencia": "alguém usou, em trabalho da empresa, uma ferramenta de IA que a direção não conhecia ou não tinha aprovado"
+    },
+    {
+      "codigo": "C03",
+      "nome": "Saída incorreta ou inadequada assumida como correta",
+      "definicao": "Conteúdo gerado por IA contém erro de fato, número inventado, referência inexistente, ou linguagem ofensiva, discriminatória ou inadequada, e é usado ou enviado como se tivesse sido verificado.",
+      "criterioDeFronteira": "Distingue-se de C05 porque aqui o problema é o erro no conteúdo; em C05 é a ausência do processo de revisão. Um erro que passou apesar de haver revisão é C03; a ausência de qualquer revisão é C05. Resposta ofensiva ou inadequada entra aqui; tratamento sistematicamente desigual de pessoas em uma decisão é C04.",
+      "exemploConcreto": "Um orçamento enviado ao cliente com um valor que a IA calculou errado e ninguém conferiu. Ou o chatbot de atendimento responde a um cliente com uma piada ofensiva.",
+      "fontesNormativas": [
+        "AIRR:D3-Misinformation",
+        "NIST-AI-RMF:MEASURE-2.5",
+        "ISO-23894:6.4.3",
+        "AIRR:1.2-ExposureToToxicContent"
+      ],
+      "aplicabilidadePorModoDeAdocao": [
+        "SaaS",
+        "API",
+        "ModeloProprio"
+      ],
+      "eventoDeOcorrencia": "um conteúdo gerado por IA com erro, ou com resposta ofensiva ou inadequada, foi usado ou enviado como se estivesse correto"
+    },
+    {
+      "codigo": "C04",
+      "nome": "Discriminação em decisão sobre pessoas",
+      "definicao": "Uso de IA em decisão que afeta pessoas produz tratamento sistematicamente desigual por característica pessoal — origem, idade, gênero, aparência, forma de escrever.",
+      "criterioDeFronteira": "Só se aplica quando a IA apoia decisão sobre pessoas identificáveis. Erro isolado que não segue padrão por característica pessoal é C03.",
+      "exemploConcreto": "Triagem automática de currículos que descarta sistematicamente candidatos formados em instituições de determinada região.",
+      "fontesNormativas": [
+        "AIRR:D1-Discrimination&Toxicity",
+        "NIST-AI-RMF:MEASURE-2.11",
+        "ISO-23894:6.4.4"
+      ],
+      "aplicabilidadePorModoDeAdocao": [
+        "SaaS",
+        "API",
+        "ModeloProprio"
+      ],
+      "eventoDeOcorrencia": "uma decisão apoiada por IA tratou de forma desigual pessoas parecidas por causa de origem, idade, gênero, região ou forma de escrever"
+    },
+    {
+      "codigo": "C05",
+      "nome": "Ausência de revisão humana em decisão consequente",
+      "definicao": "A saída da IA chega ao cliente, ao paciente ou ao sistema da organização sem que uma pessoa qualificada tenha conferido antes.",
+      "criterioDeFronteira": "É sobre o processo, não sobre o conteúdo. Se não existe etapa de conferência, é C05, mesmo que nenhum erro tenha ocorrido ainda.",
+      "exemploConcreto": "Respostas a clientes redigidas por IA e enviadas automaticamente, sem leitura prévia.",
+      "fontesNormativas": [
+        "AIRR:D5-HumanComputerInteraction",
+        "NIST-AI-RMF:GOVERN-3.2",
+        "ISO-23894:6.4.5"
+      ],
+      "aplicabilidadePorModoDeAdocao": [
+        "SaaS",
+        "API",
+        "ModeloProprio"
+      ],
+      "eventoDeOcorrencia": "um conteúdo gerado por IA chegou a cliente, paciente ou sistema da empresa sem que ninguém o tivesse lido antes"
+    },
+    {
+      "codigo": "C06",
+      "nome": "Opacidade perante a pessoa afetada",
+      "definicao": "A pessoa que recebe o conteúdo ou sofre a decisão não sabe que houve IA envolvida, e não tem como pedir revisão por uma pessoa.",
+      "criterioDeFronteira": "Distingue-se de C10 porque C06 é sobre o que a pessoa de fora sabe, e C10 sobre o que a organização consegue reconstruir internamente.",
+      "exemploConcreto": "Paciente recebe orientação pós-consulta redigida por IA acreditando que foi escrita pelo dentista.",
+      "fontesNormativas": [
+        "AIRR:D5-HumanComputerInteraction",
+        "NIST-AI-RMF:GOVERN-4.2",
+        "ISO-23894:6.4.5"
+      ],
+      "aplicabilidadePorModoDeAdocao": [
+        "SaaS",
+        "API",
+        "ModeloProprio"
+      ],
+      "eventoDeOcorrencia": "alguém recebeu conteúdo ou decisão feita com IA sem saber que havia IA envolvida, ou pediu revisão por uma pessoa e não conseguiu"
+    },
+    {
+      "codigo": "C07",
+      "nome": "Dependência de fornecedor e descontinuidade",
+      "definicao": "Um processo da organização passa a depender de uma ferramenta de IA que pode encarecer, mudar de regra, ou sair do ar, sem que exista alternativa preparada.",
+      "criterioDeFronteira": "Trata da existência ou não do fornecedor e do plano B. Mudança de comportamento com o fornecedor no ar é C12.",
+      "exemploConcreto": "O atendimento inteiro depende de um SaaS que triplica o preço na renovação, e não há como voltar ao processo anterior.",
+      "fontesNormativas": [
+        "AIRR:D6-Socioeconomic&Environmental",
+        "NIST-AI-RMF:GOVERN-6.1",
+        "ISO-23894:6.4.6"
+      ],
+      "aplicabilidadePorModoDeAdocao": [
+        "SaaS",
+        "API"
+      ],
+      "eventoDeOcorrencia": "uma ferramenta de IA saiu do ar, mudou de regra ou ficou mais cara, e isso atrapalhou o trabalho"
+    },
+    {
+      "codigo": "C08",
+      "nome": "Propriedade intelectual sobre entradas e saídas",
+      "definicao": "A organização usa conteúdo de terceiros como entrada, ou publica saída de IA, sem saber se tem direito sobre o que entra e sobre o que sai.",
+      "criterioDeFronteira": "Trata de direito sobre conteúdo. Se o problema é sigilo contratual sobre um dado específico, é C01.",
+      "exemploConcreto": "Usar imagens geradas por IA no material de divulgação sem saber se podem ser usadas comercialmente.",
+      "fontesNormativas": [
+        "AIRR:D6-Socioeconomic&Environmental",
+        "NIST-AI-RMF:MAP-4.1",
+        "ISO-23894:6.4.6"
+      ],
+      "aplicabilidadePorModoDeAdocao": [
+        "SaaS",
+        "API",
+        "ModeloProprio"
+      ],
+      "eventoDeOcorrencia": "a empresa colocou na IA conteúdo de terceiros, ou publicou algo gerado por IA, sem saber se tinha direito de fazer isso"
+    },
+    {
+      "codigo": "C09",
+      "nome": "Comprometimento de acesso e credenciais",
+      "definicao": "As contas usadas para acessar ferramentas de IA são compartilhadas, pessoais ou sem proteção adicional, e continuam ativas depois que a pessoa sai.",
+      "criterioDeFronteira": "Trata de quem consegue entrar na ferramenta. O que é enviado por quem está legitimamente dentro é C01.",
+      "exemploConcreto": "Uma conta única, com senha compartilhada no grupo da equipe, usada por todos e nunca trocada.",
+      "fontesNormativas": [
+        "AIRR:D2-Privacy&Security",
+        "NIST-AI-RMF:MANAGE-2.2",
+        "ISO-23894:6.4.2"
+      ],
+      "aplicabilidadePorModoDeAdocao": [
+        "SaaS",
+        "API",
+        "ModeloProprio"
+      ],
+      "eventoDeOcorrencia": "uma conta de ferramenta de IA da empresa foi usada por quem não deveria — ex-funcionário, pessoa de fora, senha vazada"
+    },
+    {
+      "codigo": "C10",
+      "nome": "Perda de rastreabilidade da decisão apoiada por IA",
+      "definicao": "Meses depois, a organização não consegue reconstruir que uma decisão ou um texto teve apoio de IA, com que entrada e sob responsabilidade de quem.",
+      "criterioDeFronteira": "É sobre reconstruir o passado internamente. O que a pessoa afetada sabe no momento é C06; quais ferramentas existem hoje é C02.",
+      "exemploConcreto": "Cliente questiona uma orientação recebida há oito meses e ninguém consegue dizer como aquele texto foi produzido.",
+      "fontesNormativas": [
+        "AIRR:D7-AISystemFailures",
+        "NIST-AI-RMF:GOVERN-1.4",
+        "ISO-23894:6.5.3"
+      ],
+      "aplicabilidadePorModoDeAdocao": [
+        "SaaS",
+        "API",
+        "ModeloProprio"
+      ],
+      "eventoDeOcorrencia": "a empresa precisou explicar como um texto ou decisão foi produzido e não conseguiu dizer se houve IA nem quem aprovou"
+    },
+    {
+      "codigo": "C11",
+      "nome": "Manipulação e fraude por terceiros com uso de IA",
+      "definicao": "Alguém de fora usa IA contra a organização: manipula a ferramenta de IA dela por meio do texto que envia, ou se passa por pessoa conhecida com voz, vídeo ou mensagem falsificada por IA para obter pagamento, dado ou acesso.",
+      "criterioDeFronteira": "Tem duas faces. A manipulação da ferramenta só se aplica quando a IA da organização processa texto vindo de fora. A fraude com IA (voz, vídeo ou mensagem falsificada) se aplica a qualquer organização, porque não depende de ela usar IA. Golpes sem uso de IA estão fora do escopo.",
+      "exemploConcreto": "Um cliente escreve no chat de atendimento uma instrução que faz o assistente conceder um desconto não autorizado. Ou o financeiro recebe um áudio com a voz clonada do sócio pedindo uma transferência urgente.",
+      "fontesNormativas": [
+        "AIRR:D4-MaliciousActors&Misuse",
+        "NIST-AI-RMF:MEASURE-2.7",
+        "ISO-23894:6.4.2",
+        "AIRR:4.3-Fraud,scams&targetedManipulation"
+      ],
+      "aplicabilidadePorModoDeAdocao": [
+        "SaaS",
+        "API",
+        "ModeloProprio"
+      ],
+      "eventoDeOcorrencia": "alguém de fora tentou enganar a empresa com IA — voz, vídeo ou mensagem falsificada — ou fez a ferramenta de IA da empresa agir fora do permitido"
+    },
+    {
+      "codigo": "C12",
+      "nome": "Mudança silenciosa no comportamento da ferramenta",
+      "definicao": "O fornecedor altera o modelo e a qualidade da saída muda sem aviso, sem que a organização tenha como perceber a degradação.",
+      "criterioDeFronteira": "O fornecedor continua no ar; o que mudou foi o comportamento. Se o fornecedor sai ou encarece, é C07.",
+      "exemploConcreto": "Os resumos que vinham bons passam a omitir informação relevante depois de uma atualização do fornecedor, e ninguém nota por semanas.",
+      "fontesNormativas": [
+        "AIRR:D7-AISystemFailures",
+        "NIST-AI-RMF:MEASURE-4.1",
+        "ISO-23894:6.5.2"
+      ],
+      "aplicabilidadePorModoDeAdocao": [
+        "SaaS",
+        "API"
+      ],
+      "eventoDeOcorrencia": "a qualidade do que a ferramenta de IA produz piorou sem aviso do fornecedor"
+    }
+  ],
+  "coberturaDeclarada": {
+    "dominiosDoAIRR": {
+      "D1-Discrimination&Toxicity": [
+        "C03",
+        "C04"
+      ],
+      "D2-Privacy&Security": [
+        "C01",
+        "C02",
+        "C09"
+      ],
+      "D3-Misinformation": [
+        "C03"
+      ],
+      "D4-MaliciousActors&Misuse": [
+        "C11"
+      ],
+      "D5-HumanComputerInteraction": [
+        "C05",
+        "C06"
+      ],
+      "D6-Socioeconomic&Environmental": [
+        "C07",
+        "C08"
+      ],
+      "D7-AISystemFailures&Limitations": [
+        "C02",
+        "C10",
+        "C12"
+      ]
+    },
+    "exclusoesDeclaradas": [
+      "Riscos do ciclo de desenvolvimento e treinamento de modelos — inaplicáveis a organização consumidora",
+      "Pegada ambiental do treinamento — fora do controle da organização consumidora",
+      "Riscos de escala societal e concentração de mercado — fora do alcance de ação de uma PME"
+    ],
+    "subdominiosAplicaveisDoAIRR": {
+      "nota": "Subdomínios do AI Risk Repository (Slattery et al., 2026) que se aplicam a uma PME que consome IA como serviço. Os 12 demais tratam de riscos de escala social, de desenvolvimento de modelos ou de sistemas autônomos. Conferência feita no PBL7 e atualizada no PBL8.",
+      "1.1 Discriminação injusta": [
+        "C04"
+      ],
+      "1.2 Exposição a conteúdo tóxico": [
+        "C03"
+      ],
+      "1.3 Desempenho desigual entre grupos": [
+        "C04"
+      ],
+      "2.1 Comprometimento de privacidade": [
+        "C01"
+      ],
+      "2.2 Vulnerabilidades e ataques ao sistema de IA": [
+        "C09",
+        "C11"
+      ],
+      "3.1 Informação falsa ou enganosa": [
+        "C03"
+      ],
+      "4.3 Fraude, golpes e manipulação direcionada": [
+        "C11"
+      ],
+      "5.1 Excesso de confiança e uso inseguro": [
+        "C03",
+        "C05"
+      ],
+      "5.2 Perda de autonomia humana": [
+        "C05",
+        "C06"
+      ],
+      "6.3 Desvalorização do esforço humano": [
+        "C08"
+      ],
+      "7.3 Falta de capacidade ou robustez": [
+        "C03",
+        "C12"
+      ],
+      "7.4 Falta de transparência": [
+        "C06",
+        "C10"
+      ]
+    }
+  }
+}

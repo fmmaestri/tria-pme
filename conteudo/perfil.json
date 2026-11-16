@@ -1,0 +1,99 @@
+{
+  "arquivo": "perfil.json",
+  "versao": "0.2.0",
+  "atualizadoEm": "2026-11-03",
+  "descricao": "Perguntas da E1 (caracterização do contexto) e regras que traduzem as respostas nos campos do perfil usados pelo método. Criado no PBL8: até a versão 0.1.0 essas regras estavam escritas no código da aplicação (app.js, função perfilMotor), o que contrariava a decisão DA1 do PBL4 de que os arquivos de conteúdo são a fonte de verdade do método.",
+  "campos": {
+    "porte": {
+      "rotulo": "Porte",
+      "opcoes": [["1-9", "Até 9 pessoas"], ["10-49", "10 a 49 pessoas"], ["50-99", "50 a 99 pessoas"], ["100-249", "100 a 249 pessoas"]]
+    },
+    "setor": {
+      "rotulo": "Setor de atuação",
+      "opcoes": [
+        ["saude", "Saúde (clínica, consultório, laboratório)"], ["educacao", "Educação"],
+        ["financeiro", "Financeiro (crédito, seguros, pagamentos)"], ["juridico", "Jurídico (escritório de advocacia)"],
+        ["contabil", "Contábil"], ["comercio", "Comércio e varejo"], ["servicos", "Serviços em geral"],
+        ["industria", "Indústria"], ["tecnologia", "Tecnologia e software"], ["outro", "Outro"]
+      ]
+    },
+    "naturezaDosDados": {
+      "rotulo": "Que tipo de informação a empresa trata?",
+      "multipla": true,
+      "opcaoExclusiva": "nenhum",
+      "opcoes": [
+        ["pessoaisComuns", "Dados pessoais comuns (nome, contato, CPF)"],
+        ["saude", "Dados de saúde"],
+        ["financeiro", "Dados financeiros de clientes ou funcionários"],
+        ["biometrico", "Biometria (digital, rosto, voz)"],
+        ["dadosDeMenores", "Dados de crianças ou adolescentes"],
+        ["segredoDeNegocio", "Segredo de negócio (preços, contratos, estratégia)"],
+        ["nenhum", "Nenhum dos anteriores"]
+      ]
+    },
+    "modoDeAdocao": {
+      "rotulo": "Como a empresa usa IA",
+      "opcoes": [
+        ["SaaS", "Ferramentas prontas, usadas pela internet", "Assinatura ou conta gratuita de um assistente, transcritor, gerador de imagens etc."],
+        ["API", "IA de um fornecedor integrada aos nossos sistemas", "O sistema da empresa chama o serviço do fornecedor por API."],
+        ["ModeloProprio", "Modelo de IA rodando em máquina nossa", "O modelo é instalado em computador ou servidor da própria empresa."]
+      ]
+    }
+  },
+  "perguntasDeAlcance": [
+    {
+      "campo": "exposicaoAExterno",
+      "texto": "Conteúdo produzido com IA chega a clientes, pacientes ou outras pessoas de fora?",
+      "ajuda": "Por exemplo: e-mails, orientações, orçamentos, respostas de atendimento.",
+      "seSim": "o conteúdo feito com IA chega a pessoas de fora",
+      "seNao": "o conteúdo feito com IA não sai da empresa"
+    },
+    {
+      "campo": "decideSobrePessoas",
+      "texto": "A IA ordena, filtra, pontua ou recomenda pessoas — candidatos a emprego, funcionários, clientes ou pacientes?",
+      "ajuda": "Vale para qualquer pessoa, não só para clientes. Exemplos: triagem de currículos, avaliação de desempenho, análise de crédito, priorização de atendimento.",
+      "seSim": "a IA ajuda a decidir sobre pessoas",
+      "seNao": "a IA não ajuda a decidir sobre pessoas (nem candidatos, nem funcionários, nem clientes)",
+      "historico": "Redação alterada no PBL8. A versão 0.1.0 perguntava “A IA ajuda a decidir algo sobre uma pessoa identificável?”, e os dois participantes do teste-piloto do PBL7 entenderam que a pergunta se referia só a clientes."
+    },
+    {
+      "campo": "publicaConteudo",
+      "texto": "A empresa publica material gerado por IA?",
+      "ajuda": "Site, redes sociais, catálogo, material de divulgação.",
+      "seSim": "a empresa publica material gerado por IA",
+      "seNao": "a empresa não publica material gerado por IA"
+    },
+    {
+      "campo": "processaConteudoExterno",
+      "texto": "A IA lê ou responde diretamente textos escritos por pessoas de fora?",
+      "ajuda": "Por exemplo: um chat de atendimento ou uma caixa de e-mail respondida pela IA.",
+      "seSim": "a IA lê ou responde diretamente textos de pessoas de fora",
+      "seNao": "a IA não lê nem responde textos de pessoas de fora"
+    }
+  ],
+  "papeis": [
+    ["direcao_ou_socio", "Direção ou sócio(a)", "direção"],
+    ["responsavel_ti", "Responsável de TI (pode ser terceirizado)", "TI"],
+    ["responsavel_administrativo", "Responsável administrativo", "administrativo"],
+    ["responsavel_da_area", "Responsável da área que usa a IA", "área"]
+  ],
+  "derivacoes": [
+    { "campo": "porte", "de": "porte" },
+    { "campo": "setor", "de": "setor" },
+    { "campo": "modoDeAdocao", "de": "modoDeAdocao" },
+    { "campo": "naturezaDosDados", "de": "naturezaDosDados", "remover": ["nenhum"] },
+    { "campo": "exposicaoAExterno", "de": "exposicaoAExterno", "booleano": true },
+    { "campo": "publicaConteudo", "de": "publicaConteudo", "booleano": true },
+    { "campo": "processaConteudoExterno", "de": "processaConteudoExterno", "booleano": true },
+    {
+      "campo": "criticidadeDaDecisao",
+      "descricao": "Regra composta: decisão sobre pessoas prevalece sobre conteúdo externo, que prevalece sobre uso interno.",
+      "casos": [
+        { "se": { "decideSobrePessoas": true }, "valor": ["afetaPessoas"] },
+        { "se": { "exposicaoAExterno": true }, "valor": ["apoiaConteudoExterno"] }
+      ],
+      "senao": ["usoInterno"],
+      "perguntasDeOrigem": ["decideSobrePessoas", "exposicaoAExterno"]
+    }
+  ]
+}

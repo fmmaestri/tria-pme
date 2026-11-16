@@ -1,0 +1,130 @@
+{
+  "arquivo": "caso_demonstrativo.json",
+  "versao": "0.2.0",
+  "atualizadoEm": "2026-11-03",
+  "descricao": "Caso representativo usado na demonstração: clínica odontológica fictícia com 22 funcionários que consome dois serviços de IA de terceiros. Versão 0.2.0 (PBL8): respostas da E3 convertidas para a nova escala de frequência (P antigo 1–2 → nunca; 3–5 → já aconteceu), resposta acrescentada para a pergunta nova I-30 e responsáveis com nome e cargo.",
+  "perfil": {
+    "organizacao": "Clínica Sorriso Pleno (caso fictício)",
+    "porte": "10-49",
+    "setor": "saude",
+    "naturezaDosDados": [
+      "pessoaisComuns",
+      "saude"
+    ],
+    "modoDeAdocao": "SaaS",
+    "decideSobrePessoas": false,
+    "exposicaoAExterno": true,
+    "publicaConteudo": false,
+    "processaConteudoExterno": false,
+    "sistemasDeIA": [
+      {
+        "nome": "Assistente de redação com IA generativa",
+        "finalidade": "Redigir orientações pós-consulta enviadas aos pacientes",
+        "fornecedor": "Serviço SaaS de terceiro",
+        "sancionado": "sim"
+      },
+      {
+        "nome": "Transcrição automática de consultas",
+        "finalidade": "Transcrever a conversa da consulta para o prontuário",
+        "fornecedor": "Serviço SaaS de terceiro",
+        "sancionado": "naoSei"
+      }
+    ],
+    "pessoas": {
+      "direcao_ou_socio": "Dra. Helena Duarte",
+      "responsavel_ti": "Marcelo Reis",
+      "responsavel_administrativo": "Patrícia Nunes",
+      "responsavel_da_area": ""
+    }
+  },
+  "respostas": {
+    "I-01": "nao",
+    "I-02": "naoSei",
+    "I-03": "sim",
+    "I-04": "nao",
+    "I-05": "nao",
+    "I-06": "sim",
+    "I-07": "sim",
+    "I-08": "nao",
+    "I-09": "nao",
+    "I-12": "sim",
+    "I-13": "nao",
+    "I-14": "nao",
+    "I-15": "nao",
+    "I-16": "nao",
+    "I-17": "naoSei",
+    "I-19": "nao",
+    "I-20": "sim",
+    "I-21": "nao",
+    "I-22": "nao",
+    "I-23": "nao",
+    "I-24": "nao",
+    "I-27": "nao",
+    "I-28": "naoSei",
+    "I-30": "naoSei"
+  },
+  "avaliacoes": {
+    "C01": {
+      "I": 5,
+      "F": "jaAconteceu"
+    },
+    "C02": {
+      "I": 3,
+      "F": "jaAconteceu"
+    },
+    "C03": {
+      "I": 4,
+      "F": "nunca"
+    },
+    "C05": {
+      "I": 4,
+      "F": "nunca"
+    },
+    "C06": {
+      "I": 3,
+      "F": "jaAconteceu"
+    },
+    "C07": {
+      "I": 3,
+      "F": "jaAconteceu"
+    },
+    "C09": {
+      "I": 4,
+      "F": "jaAconteceu"
+    },
+    "C10": {
+      "I": 3,
+      "F": "jaAconteceu"
+    },
+    "C11": {
+      "I": 3,
+      "F": "nunca"
+    },
+    "C12": {
+      "I": 2,
+      "F": "jaAconteceu"
+    }
+  },
+  "responsaveis": {
+    "C01": {
+      "nome": "Dra. Helena Duarte",
+      "cargo": "Sócia-diretora"
+    },
+    "C10": {
+      "nome": "Patrícia Nunes",
+      "cargo": "Gerente administrativa"
+    },
+    "C09": {
+      "nome": "Marcelo Reis",
+      "cargo": "TI (terceirizado)"
+    },
+    "C06": {
+      "nome": "Dra. Helena Duarte",
+      "cargo": "Sócia-diretora"
+    },
+    "C02": {
+      "nome": "Patrícia Nunes",
+      "cargo": "Gerente administrativa"
+    }
+  }
+}
